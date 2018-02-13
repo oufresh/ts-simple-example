@@ -1,6 +1,2 @@
-1. Installare Node.Js
-2. Installare typescript con "npm install -g typescript"
-3. Inizializzare il progetto nella dircetory voluta con "tsc --init"
-4. modificare il file tsconfig.json secondo quanto volute ("sourceMap": true,  "removeComments": true, "noImplicitAny": true,  ecc...)
-5. Compilare il typescript con "tsc -sourceMap"
-6. Includere nella pagina html il file js generato
+Example of typescript with native javascript modules.
+Before run the example install dependency run "npm install" first, then compile with tsc.

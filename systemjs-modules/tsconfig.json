@@ -5,8 +5,8 @@
     "sourceMap": true
   },
   "files": [
-    "js/app.ts",
-    "js/lib.ts"
+    "src/app.ts",
+    "src/lib.ts"
   ],
   "exclude": [
     "node_modules"
