@@ -1,0 +1,2 @@
+Example of use of typescript with systemjs modules.
+Before run the example install dependency run "npm install" first, then compile with tsc.
