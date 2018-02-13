@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Typescript Modules Test</title>
+  <style>
+	body {
+		margin: none;
+	}
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	.box
+	{
+		position: absolute;
+		top: 50px;
+		left: 50px;
+		width: 100px;
+		height: 100px;
+		background-color: red;
+	}
+  </style>
+	<script src="js/system.js"></script>
+</head>
+<body>
+  <div id="Box" class="box" style="display: none">
+  </div>
+</body>
+	<script>
+	SystemJS.import('/js/app.js').then(function (m) {
+		console.log(m);
+	});
+	</script>
+</html>
