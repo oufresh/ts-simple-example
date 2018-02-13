@@ -10,6 +10,7 @@ export class MyLib
 	show()
 	{
 		document.getElementById(this.greeting).style.display = "block";
+		document.getElementById(this.greeting).classList.add("visible");
 		console.log(this.greeting);
 	}
 }

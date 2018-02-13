@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "target": "es2015",
+    "sourceMap": true
+  },
+  "files": [
+    "js/app.ts",
+    "js/lib.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -33,4 +33,5 @@ function Pippo()
 
 
 (<any>window).app = new App("Box");
+(<any>window).app.start();
 

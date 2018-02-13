@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "module": "es2015",
+    "target": "ES2017",
     "sourceMap": true
   },
   "files": [
-	"js/app.ts",
-	"js/lib.ts",
+    "js/app.ts",
+    "js/lib.ts"
   ],
   "exclude": [
     "node_modules"

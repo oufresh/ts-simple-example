@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var MyLib = /** @class */ (function () {
-    function MyLib(greeting) {
+export class MyLib {
+    constructor(greeting) {
         this.greeting = greeting;
     }
-    MyLib.prototype.show = function () {
+    show() {
         document.getElementById(this.greeting).style.display = "block";
+        document.getElementById(this.greeting).classList.add("visible");
         console.log(this.greeting);
-    };
-    return MyLib;
-}());
-exports.MyLib = MyLib;
+    }
+}
 //# sourceMappingURL=lib.js.map

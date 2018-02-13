@@ -1,19 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var Lib = require("./lib.js");
-var App = /** @class */ (function () {
-    function App(id) {
+import * as Lib from "./lib.js";
+class App {
+    constructor(id) {
         this.id = id;
         this.start();
     }
-    App.prototype.start = function () {
-        var lib = new Lib.MyLib(this.id);
+    start() {
+        let lib = new Lib.MyLib(this.id);
         lib.show();
-    };
-    App.prototype.hello = function () {
-    };
-    return App;
-}());
+    }
+    hello() {
+    }
+}
 function Pippo() {
     console.log("Pippo");
 }
@@ -22,4 +19,5 @@ function Pippo() {
 }*/
 //window.app = new App("Box");
 window.app = new App("Box");
+window.app.start();
 //# sourceMappingURL=app.js.map
