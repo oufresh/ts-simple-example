@@ -4,6 +4,7 @@
   - systemjs-modules, basic example using systemjs to load modules
   - async-await, basic usage
   - oufresh-module, boilerplate for a typescript module with its demo bundled with rollup
+  - test, a simple project to test oufresh-module bundled with parcel (yet another different bundler ...)
 
 ### Instructions
 
