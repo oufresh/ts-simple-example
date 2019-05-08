@@ -1,0 +1,39 @@
+{
+  "name": "oufresh-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "demo": "demo/dist/index.js",
+  "jsnext:main": "build/index.es.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c ./rollup.config-project.js && rollup -c ./rollup.config-demo.js",
+    "demo": "node demo/dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oufresh/ts-simple-example.git"
+  },
+  "author": "oufresh",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.12",
+    "jest": "^24.8.0",
+    "rollup": "^1.11.3",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.21.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "files": [
+    "build"
+  ]
+}
