@@ -1,9 +1,9 @@
 # ts-simple-example
 ### A simple hello world of typescript with three example
-  - hello, basic typescript example
   - native-modules, basic loading modules with native javascript support
   - systemjs-modules, basic example using systemjs to load modules
-  - ts-webpack, example of use typescript with webpack, css loader is confgired with autoprefixer
+  - async-await, basic usage
+  - oufresh-module, boilerplate for a typescript module with its demo bundled with rollup
 
 ### Instructions
 
