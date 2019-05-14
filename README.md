@@ -5,6 +5,8 @@
   - async-await, basic usage
   - oufresh-module, boilerplate for a typescript module with its demo bundled with rollup
   - test, a simple project to test oufresh-module bundled with parcel (yet another different bundler ...)
+  - test-webpack, simple test of oufresh-module with webpack
+  - oufresh-react-module, boilerplate module with react typescript bundld with rollpup 
 
 ### Instructions
 
