@@ -1,21 +1,28 @@
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
-import external from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
-
-import pkg from "./package.json";
+import html from 'rollup-plugin-fill-html';
+import clean from "rollup-plugin-clean";
+import serve from 'rollup-plugin-serve';
+import globals from 'rollup-plugin-node-globals';
+import multiEntry from "rollup-plugin-multi-entry";
 
 export default {
-  input: "demo/src/index.tsx",
+  input: ["demo/src/index.tsx", "src/index.ts"],
   output: [
     {
-      file: pkg.demo,
-      format: "es",
+      file: "demo/dist/index.js",
+      format: "iife",
+      name: "demo",
       sourcemap: true
     }
   ],
+  entry: 'demo/src/index.tsx',
+  dest: 'demo/dist/bundle.js',
   plugins: [
-    external(),
+    multiEntry(),
+    serve("demo/dist"),
+    clean(),
     resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
@@ -24,6 +31,7 @@ export default {
     }),
     commonjs({
       include: ["node_modules/**"],
+      browser: true,
       namedExports: {
         "node_modules/react/react.js": [
           "Children",
@@ -33,6 +41,11 @@ export default {
         ],
         "node_modules/react-dom/index.js": ["render"]
       }
-    })
+    }),
+    html({
+      template: 'demo/src/index.html',
+      filename: 'dist/index.html'
+    }),
+    globals()
   ]
 };
