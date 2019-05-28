@@ -2,3 +2,4 @@ node_modules
 build
 demo/dist
 dist
+.cache
