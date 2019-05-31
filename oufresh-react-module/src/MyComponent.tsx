@@ -7,5 +7,5 @@ export interface IMyComponentProps {
 
 export const MyComponent = (props: IMyComponentProps) => {
     const str = "Hello, the text is: " + props.text;
-    return <div className={style.MyComponentBackGround}><label>{str}</label></div>;
+    return <div className={style.myComponentBackGround}><label>{str}</label></div>;
 };

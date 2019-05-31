@@ -1,13 +1,13 @@
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
-import postcss from 'rollup-plugin-postcss'
-//import postcss from 'rollup-plugin-postcss-modules';
+//import postcss from 'rollup-plugin-postcss'
+import postcss from 'rollup-plugin-postcss-modules';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
 //import css from "@modular-css/rollup";
-
+import autoprefixer from 'autoprefixer';
 import pkg from "./package.json";
 
 export default {
@@ -28,13 +28,15 @@ export default {
   ],
   plugins: [
     external(),
-    postcss({
-      modules: true
-    }),
-    //css(),
     url(),
     svgr(),
     resolve(),
+    postcss({
+			extract: false,  // extracts to `${basename(dest)}.css`
+			plugins: [autoprefixer()],
+			writeDefinitions: true,
+			// modules: { ... }
+		}),
     typescript({
       rollupCommonJSResolveHack: true,
       exclude: "**/__tests__/**",
