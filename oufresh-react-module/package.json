@@ -27,6 +27,8 @@
     "@types/react-dom": "^16.8.4",
     "autoprefixer": "^9.5.1",
     "jest": "^24.8.0",
+    "jest-css-modules": "^2.0.0",
+    "jest-dom": "^3.4.0",
     "postcss": "^7.0.16",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -48,7 +50,14 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node"
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
+    }
   },
   "files": [
     "build"

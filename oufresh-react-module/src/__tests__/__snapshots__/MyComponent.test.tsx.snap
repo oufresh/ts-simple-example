@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MyComponent 1`] = `
+<DocumentFragment>
+  <div>
+    <label>
+      Hello, the text is: PROVA
+    </label>
+  </div>
+</DocumentFragment>
+`;
