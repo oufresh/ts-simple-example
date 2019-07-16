@@ -1,0 +1,50 @@
+{
+  "name": "test-oufresh-react",
+  "version": "1.0.0",
+  "description": "test-oufresh-react",
+  "main": "src/index.tsx",
+  "scripts": {
+    "develop": "concurrently -r \"yarn:type-check:watch\" \"yarn:start\"",
+    "start": "parcel ./src/index.html",
+    "build": "yarn run type-check && parcel build ./src/index.html --public-url '/'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
+  },
+  "dependencies": {
+    "oufresh-react-module": "^1.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "autoprefixer": "^9.6.1",
+    "concurrently": "^4.1.1",
+    "jest": "^24.8.0",
+    "parcel-bundler": "^1.12.3",
+    "postcss-modules": "^1.4.1",
+    "react-test-renderer": "^16.8.6",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/config/test-preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/*.(test|spec).(ts|tsx|js)"
+    ]
+  }
+}
