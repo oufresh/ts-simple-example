@@ -1,6 +1,6 @@
 {
-  "name": "oufresh-module",
-  "version": "1.0.0",
+  "name": "oufresh-react-module",
+  "version": "1.0.2",
   "description": "",
   "main": "build/index.js",
   "module": "build/index.es.js",
