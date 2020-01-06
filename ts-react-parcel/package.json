@@ -1,0 +1,41 @@
+{
+  "name": "ts-react-parcel",
+  "version": "1.0.0",
+  "description": "React hooks, using parcel bundler",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oufresh/ts-simple-example.git"
+  },
+  "author": "oufresh",
+  "license": "MIT",
+  "main": "src/index.tsx",
+  "scripts": {
+    "develop": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
+    "start": "parcel ./src/index.html",
+    "build": "npm run type-check && parcel build ./src/index.html --public-url '/'",
+    "prettify": "prettier --write './src/**/*.{ts,tsx}'",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.4",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
+    "autoprefixer": "^9.7.3",
+    "concurrently": "^4.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "parcel-bundler": "^1.12.4",
+    "postcss-modules": "^1.4.1",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.4"
+  }
+}
