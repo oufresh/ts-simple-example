@@ -1,8 +1,13 @@
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   text-align: center;
   margin-top: 50px;
   color: red;
+}
+
+.main {
+  margin-top: 10px;
+  border-top: 1px solid gray;
 }

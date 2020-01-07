@@ -1,0 +1,23 @@
+.clickTester {
+  margin: 5px;
+  border-radius: 2px;
+  box-shadow: none;
+  background-color: lightblue;
+  border: none;
+  outline: none;
+  width: 120px;
+  height: 32px;
+  user-select: none;
+}
+
+.clickTester:hover {
+  cursor: pointer;
+  background-color: rgb(101, 187, 216);
+}
+
+.clickTester:active,
+.clickTester:hover:active,
+.clickTester:focus:active {
+  cursor: pointer;
+  background-color: rgb(63, 176, 214);
+}
