@@ -2,9 +2,17 @@ import * as React from "react";
 import { noop } from "./cancellablePromise";
 import pleaseStopTriggeringClicksOnDoubleClick from "./pleaseStopTriggeringClicksOnDoubleClick";
 
-const ClickableBox = ({ onClick, onDoubleClick }) => (
+type ClickableBoxProps = {
+  onClick: () => void;
+  onDoubleClick: () => void;
+};
+
+const ClickableBox: React.SFC<ClickableBoxProps> = ({
+  onClick,
+  onDoubleClick
+}: ClickableBoxProps) => (
   <div onClick={onClick} onDoubleClick={onDoubleClick}>
-    Click or double click
+    <span>Click or double click</span>
   </div>
 );
 
@@ -13,7 +21,9 @@ ClickableBox.defaultProps = {
   onDoubleClick: noop
 };
 
-const EnhancedClickableBox = pleaseStopTriggeringClicksOnDoubleClick(ClickableBox);
+const EnhancedClickableBox: React.ComponentType<ClickableBoxProps> = pleaseStopTriggeringClicksOnDoubleClick(
+  ClickableBox
+);
 
 const DoubleClickExample = () => (
   <EnhancedClickableBox

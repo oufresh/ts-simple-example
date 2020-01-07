@@ -1,19 +1,25 @@
-export const cancellablePromise = (promise: Promise<any>) => {
+export interface CancellablePromise {
+  promise: Promise<{}>;
+  cancel: () => {};
+}
+
+export const cancellablePromise = (promise: Promise<{}>): CancellablePromise => {
   let isCanceled = false;
 
-  const wrappedPromise = new Promise((resolve, reject) => {
+  const wrappedPromise = new Promise<{}>((resolve, reject) => {
     promise.then(
-      (value: any) => (isCanceled ? reject({ isCanceled, value }) : resolve(value)),
+      (value: {}) => (isCanceled ? reject({ isCanceled, value }) : resolve(value)),
       (error: Error) => reject({ isCanceled, error })
     );
   });
 
   return {
     promise: wrappedPromise,
-    cancel: () => (isCanceled = true)
+    cancel: (): {} => (isCanceled = true)
   };
 };
 
-export const noop = () => {};
+export const noop = (): void => {};
 
-export const delay = (n) => new Promise((resolve) => setTimeout(resolve, n));
+export const delay = (n: number): Promise<{}> =>
+  new Promise((resolve) => setTimeout(resolve, n));

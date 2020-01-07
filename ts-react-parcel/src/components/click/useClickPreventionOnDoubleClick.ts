@@ -1,7 +1,13 @@
-const useClickPreventionOnDoubleClick = (onClick, onDoubleClick) => {
+import useCancellablePromises from "./useCancellablePromises";
+import { cancellablePromise, delay } from "./cancellablePromise";
+
+const useClickPreventionOnDoubleClick = (
+  onClick: () => {} | void,
+  onDoubleClick: () => {} | void
+): Array<any> => {
   const api = useCancellablePromises();
 
-  const handleClick = () => {
+  const handleClick = (): Promise<any> => {
     api.clearPendingPromises();
     const waitForClick = cancellablePromise(delay(300));
     api.appendPendingPromise(waitForClick);
@@ -19,7 +25,7 @@ const useClickPreventionOnDoubleClick = (onClick, onDoubleClick) => {
       });
   };
 
-  const handleDoubleClick = () => {
+  const handleDoubleClick = (): void => {
     api.clearPendingPromises();
     onDoubleClick();
   };

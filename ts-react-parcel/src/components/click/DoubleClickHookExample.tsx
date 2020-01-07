@@ -1,24 +1,35 @@
-import React from "react";
-import { useClickPreventionOnDoubleClick } from "./stop-triggering-onclick-twice-ondoubleclick";
+import * as React from "react";
+import useClickPreventionOnDoubleClick from "./useClickPreventionOnDoubleClick";
+import style from "./DoubleClickHookExample.module.css";
 
-const ClickableBox = ({ onClick, onDoubleClick }) => {
+const ClickableBox = ({
+  onClick,
+  onDoubleClick
+}: {
+  onClick: () => {} | void;
+  onDoubleClick: () => {} | void;
+}) => {
   const [handleClick, handleDoubleClick] = useClickPreventionOnDoubleClick(
     onClick,
     onDoubleClick
   );
 
   return (
-    <div onClick={handleClick} onDoubleClick={handleDoubleClick}>
+    <div
+      className={style.clickBox}
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
+    >
       Click or double click
     </div>
   );
 };
 
-const DoubleClickExample = () => (
+const DoubleClickHookExample = () => (
   <ClickableBox
     onClick={() => console.log("on click")}
     onDoubleClick={() => console.log("on double click")}
   />
 );
 
-export default DoubleClickExample;
+export default DoubleClickHookExample;

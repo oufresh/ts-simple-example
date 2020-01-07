@@ -1,20 +1,27 @@
-import React, { Component } from "react";
-import { delay, cancelablePromise, noop } from "./utils";
+import * as React from "react";
+import { delay, cancellablePromise, CancellablePromise } from "./cancellablePromise";
 
-const pleaseStopTriggeringClicksOnDoubleClick = (WrappedComponent) => {
-  class ComponentWrapper extends Component {
-    componentWillUnmount() {
+type HOCClickableBoxProps = {
+  onClick: () => void;
+  onDoubleClick: () => void;
+};
+
+const pleaseStopTriggeringClicksOnDoubleClick = (
+  WrappedComponent: React.ComponentType<HOCClickableBoxProps>
+): React.ComponentType<HOCClickableBoxProps> => {
+  class ComponentWrapper extends React.Component<HOCClickableBoxProps> {
+    componentWillUnmount(): void {
       // cancel all pending promises to avoid
       // side effects when the component is unmounted
       this.clearPendingPromises();
     }
 
-    pendingPromises = [];
+    pendingPromises: Array<CancellablePromise> = [];
 
-    appendPendingPromise = (promise) =>
+    appendPendingPromise = (promise: CancellablePromise) =>
       (this.pendingPromises = [...this.pendingPromises, promise]);
 
-    removePendingPromise = (promise) =>
+    removePendingPromise = (promise: CancellablePromise) =>
       (this.pendingPromises = this.pendingPromises.filter((p) => p !== promise));
 
     clearPendingPromises = () => this.pendingPromises.map((p) => p.cancel());
@@ -22,7 +29,7 @@ const pleaseStopTriggeringClicksOnDoubleClick = (WrappedComponent) => {
     handleClick = () => {
       // create the cancelable promise and add it to
       // the pending promises queue
-      const waitForClick = cancelablePromise(delay(300));
+      const waitForClick = cancellablePromise(delay(300));
       this.appendPendingPromise(waitForClick);
 
       return waitForClick.promise
@@ -30,7 +37,7 @@ const pleaseStopTriggeringClicksOnDoubleClick = (WrappedComponent) => {
           // if the promise wasn't cancelled, we execute
           // the callback and remove it from the queue
           this.removePendingPromise(waitForClick);
-          this.props.onClick();
+          if (this.props.onClick) this.props.onClick();
         })
         .catch((errorInfo) => {
           // rethrow the error if the promise wasn't
@@ -46,7 +53,7 @@ const pleaseStopTriggeringClicksOnDoubleClick = (WrappedComponent) => {
       // all (click) pending promises are part of a
       // dblclick event so we cancel them
       this.clearPendingPromises();
-      this.props.onDoubleClick();
+      if (this.props.onDoubleClick) this.props.onDoubleClick();
     };
 
     render() {
@@ -60,14 +67,9 @@ const pleaseStopTriggeringClicksOnDoubleClick = (WrappedComponent) => {
     }
   }
 
-  ComponetWrapper.displayName = `withClickPrevention(${WrappedComponent.displayName ||
+  /*ComponentWrapper.displayName = `withClickPrevention(${WrappedComponent.displayName ||
     WrappedComponent.name ||
-    "Component"})`;
-
-  ComponentWrapper.defaultProps = {
-    onClick: noop,
-    onDoubleClick: noop
-  };
+    "Component"})`;*/
 
   return ComponentWrapper;
 };
